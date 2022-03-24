@@ -2,6 +2,7 @@ version: '3.7'
 services:
   mysql-docker:
     image: mysql:${MYSQL_IMAGE_VERSION}
+    restart: always
     container_name: mysql-docker
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
