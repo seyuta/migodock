@@ -15,7 +15,10 @@
 # vendor/
 
 .history
+.vscode/
 ftp-server/data/
 mongodb/data/
 mysql/data/
 postgres/data/
+rabiitmq/data/
+rabiitmq/log/

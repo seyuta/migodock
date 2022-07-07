@@ -77,3 +77,12 @@ stop-pgadmin:
 	@echo "stopping pgadmin..."
 	@$(DOCKER) kill pgadmin-docker && $(DOCKER) container rm pgadmin-docker
 	@echo "pgadmin stopped!"
+start-rabbitmq:
+	@echo "starting rabbitmq..."
+	@cd rabbitmq && $(DOCKER)-compose up -d
+	@$(DOCKER) ps | grep rabbitmq-docker
+	@echo "rabbitmq started!"
+stop-rabbitmq:
+	@echo "stopping rabbitmq..."
+	@$(DOCKER) kill rabbitmq-docker && $(DOCKER) container rm rabbitmq-docker
+	@echo "rabbitmq stopped!"
