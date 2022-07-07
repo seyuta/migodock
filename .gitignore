@@ -20,5 +20,5 @@ ftp-server/data/
 mongodb/data/
 mysql/data/
 postgres/data/
-rabiitmq/data/
-rabiitmq/log/
+rabbitmq/data/
+rabbitmq/log/
