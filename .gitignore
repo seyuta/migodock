@@ -22,3 +22,4 @@ mysql/data/
 postgres/data/
 rabbitmq/data/
 rabbitmq/log/
+redis-json/data/

@@ -86,3 +86,13 @@ stop-rabbitmq:
 	@echo "stopping rabbitmq..."
 	@$(DOCKER) kill rabbitmq-docker && $(DOCKER) container rm rabbitmq-docker
 	@echo "rabbitmq stopped!"
+
+start-redis-json:
+	@echo "starting redis-json..."
+	@cd redis-json && $(DOCKER)-compose up -d
+	@$(DOCKER) ps | grep redis-json-docker
+	@echo "redis-json started!"
+stop-redis-json:
+	@echo "stopping redis-json..."
+	@$(DOCKER) kill redis-json-docker && $(DOCKER) container rm redis-json-docker
+	@echo "redis-json stopped!"
