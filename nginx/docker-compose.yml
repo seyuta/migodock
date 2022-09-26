@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  nginx-docker:
+    image: nginx:stable-alpine
+    restart: always
+    container_name: nginx-docker
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./log:/var/log/nginx

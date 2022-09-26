@@ -96,3 +96,13 @@ stop-redis-json:
 	@echo "stopping redis-json..."
 	@$(DOCKER) kill redis-json-docker && $(DOCKER) container rm redis-json-docker
 	@echo "redis-json stopped!"
+
+start-nginx:
+	@echo "starting nginx..."
+	@cd nginx && $(DOCKER)-compose up -d
+	@$(DOCKER) ps | grep nginx-docker
+	@echo "nginx started!"
+stop-nginx:
+	@echo "stopping nginx..."
+	@$(DOCKER) kill nginx-docker && $(DOCKER) container rm nginx-docker
+	@echo "nginx stopped!"
