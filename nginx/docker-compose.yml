@@ -10,3 +10,8 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
       - ./log:/var/log/nginx
+    networks:
+      - base_net
+networks:
+  base_net:
+    external: true
