@@ -4,7 +4,8 @@ services:
     image: redislabs/rejson:${REJSON_IMAGE_VERSION}
     restart: always
     container_name: redis-json-docker
-    command: redis-server --requirepass ${REJSON_PASSWORD} --loadmodule /usr/lib/redis/modules/rejson.so
+    # command: redis-server --requirepass ${REJSON_PASSWORD} --loadmodule /usr/lib/redis/modules/rejson.so
+    command: redis-server --loadmodule /usr/lib/redis/modules/rejson.so # no password
     ports:
       - 6379:6379
     volumes:
