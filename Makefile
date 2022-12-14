@@ -41,6 +41,7 @@ stop-ftp-server:
 	@echo "stopping ftp-server..."
 	@$(DOCKER) kill ftp-server-docker && $(DOCKER) container rm ftp-server-docker
 	@echo "ftp-server stopped!"
+
 start-mongodb:
 	@echo "starting mongodb..."
 	@cd mongodb && $(DOCKER)-compose up -d
@@ -50,6 +51,7 @@ stop-mongodb:
 	@echo "stopping mongodb..."
 	@$(DOCKER) kill mongodb-docker && $(DOCKER) container rm mongodb-docker
 	@echo "mongodb stopped!"
+
 start-mysql:
 	@echo "starting mysql..."
 	@cd mysql && $(DOCKER)-compose up -d
@@ -59,6 +61,17 @@ stop-mysql:
 	@echo "stopping mysql..."
 	@$(DOCKER) kill mysql-docker && $(DOCKER) container rm mysql-docker
 	@echo "mysql stopped!"
+
+start-portainer:
+	@echo "starting portainer..."
+	@cd portainer && $(DOCKER)-compose up -d
+	@$(DOCKER) ps | grep portainer-docker
+	@echo "portainer started!"
+stop-portainer:
+	@echo "stopping portainer..."
+	@$(DOCKER) kill portainer-docker && $(DOCKER) container rm portainer-docker
+	@echo "portainer stopped!"
+
 start-postgres:
 	@echo "starting postgres..."
 	@cd postgres && $(DOCKER)-compose up -d
@@ -68,6 +81,7 @@ stop-postgres:
 	@echo "stopping postgres..."
 	@$(DOCKER) kill postgres-docker && $(DOCKER) container rm postgres-docker
 	@echo "postgres stopped!"
+
 start-pgadmin:
 	@echo "starting pgadmin..."
 	@cd pgadmin && $(DOCKER)-compose up -d
@@ -77,6 +91,7 @@ stop-pgadmin:
 	@echo "stopping pgadmin..."
 	@$(DOCKER) kill pgadmin-docker && $(DOCKER) container rm pgadmin-docker
 	@echo "pgadmin stopped!"
+
 start-rabbitmq:
 	@echo "starting rabbitmq..."
 	@cd rabbitmq && $(DOCKER)-compose up -d

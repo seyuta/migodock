@@ -19,6 +19,7 @@
 ftp-server/data/
 mongodb/data/
 mysql/data/
+portainer/data/
 postgres/data/
 rabbitmq/data/
 rabbitmq/log/

@@ -2,7 +2,7 @@ version: '3.7'
 services:
   rabbitmq-docker:
     image: rabbitmq:${RABBITMQ_IMAGE_VERSION}
-    restart: on-failure
+    restart: unless-stopped
     container_name: rabbitmq-docker
     environment:
         - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER}
@@ -15,3 +15,8 @@ services:
     volumes:
         - ./data:/var/lib/rabbitmq/
         - ./log:/var/log/rabbitmq/ #./log permission must 777 (chmod -R 777 ./log)
+    networks:
+      - base_net
+networks:
+  base_net:
+    external: true

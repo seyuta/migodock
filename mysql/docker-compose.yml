@@ -2,7 +2,7 @@ version: '3.7'
 services:
   mysql-docker:
     image: mysql:${MYSQL_IMAGE_VERSION}
-    restart: always
+    restart: unless-stopped
     container_name: mysql-docker
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
@@ -12,3 +12,8 @@ services:
       - 3306:3306
     volumes:
       - ./data:/var/lib/mysql
+    networks:
+      - base_net
+networks:
+  base_net:
+    external: true

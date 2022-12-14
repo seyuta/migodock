@@ -2,7 +2,7 @@ version: '3.7'
 services:
   redis-json-docker:
     image: redislabs/rejson:${REJSON_IMAGE_VERSION}
-    restart: always
+    restart: unless-stopped
     container_name: redis-json-docker
     # command: redis-server --requirepass ${REJSON_PASSWORD} --loadmodule /usr/lib/redis/modules/rejson.so
     command: redis-server --loadmodule /usr/lib/redis/modules/rejson.so # no password
@@ -10,3 +10,8 @@ services:
       - 6379:6379
     volumes:
       - ./data:/data
+    networks:
+      - base_net
+networks:
+  base_net:
+    external: true

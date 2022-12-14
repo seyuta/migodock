@@ -2,7 +2,7 @@ version: '3.7'
 services:
   postgres-docker:
     image: postgres:${POSTGRES_IMAGE_VERSION}
-    restart: always
+    restart: unless-stopped
     container_name: postgres-docker
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
@@ -11,3 +11,8 @@ services:
       - 5432:5432
     volumes:
       - ./data:/var/lib/postgresql/data
+    networks:
+      - base_net
+networks:
+  base_net:
+    external: true
