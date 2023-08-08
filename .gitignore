@@ -17,7 +17,7 @@
 .history
 .vscode/
 ftp-server/data/
-mongodb/data/
+mongodb/data*
 mysql/data/
 portainer/data/
 postgres/data/
@@ -25,3 +25,4 @@ rabbitmq/data/
 rabbitmq/log/
 redis-json/data/
 nginx/log/
+clickhousedb/data*
