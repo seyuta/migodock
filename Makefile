@@ -32,6 +32,16 @@ else
     DOCKER=sudo docker
 endif
 
+start-clickhousedb:
+	@echo "starting clickhousedb..."
+	@cd clickhousedb && $(DOCKER)-compose up -d
+	@$(DOCKER) ps | grep clickhousedb-docker
+	@echo "clickhousedb started!"
+stop-clickhousedb:
+	@echo "stopping clickhousedb..."
+	@$(DOCKER) kill clickhousedb-docker && $(DOCKER) container rm clickhousedb-docker
+	@echo "clickhousedb stopped!"
+
 start-ftp-server:
 	@echo "starting ftp-server..."
 	@cd ftp-server && $(DOCKER)-compose up -d
