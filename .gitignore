@@ -16,13 +16,14 @@
 
 .history
 .vscode/
-ftp-server/data/
+ftp-server/data*
 mongodb/data*
-mysql/data/
-portainer/data/
-postgres/data/
-rabbitmq/data/
-rabbitmq/log/
-redis-json/data/
-nginx/log/
+mysql/data*
+portainer/data*
+postgres/data*
+rabbitmq/data*
+rabbitmq/log*
+redis-json/data*
+nginx/log*
 clickhousedb/data*
+wordpress/data*

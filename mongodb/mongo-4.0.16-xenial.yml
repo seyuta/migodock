@@ -1,11 +1,9 @@
 version: '3.7'
 services:
-  mongodb-docker:
-    # image: mongo:${MONGO_IMAGE_VERSION}
-    image: mongo:5.0.0-focal
-    # image: mongo:4.0.16-xenial
+  mongodb-4.0.16-xenial:
+    image: mongo:4.0.16-xenial
     restart: unless-stopped
-    container_name: mongodb-docker
+    container_name: mongodb-4.0.16-xenial
     logging:
       driver: "json-file"
       options:
@@ -20,18 +18,11 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
     ports:
-      - 27017:27017
-      # - 27018:27018
+      - 27018:27018
     volumes:
-      - ./data/db:/data/db
-      # - ./data-4.0.16-xenial/db:/data/db
-      # - ecollv3-mongodb:/data/db
+      - ./data-4.0.16-xenial/db:/data/db
     networks:
       - base_net
 networks:
   base_net:
     external: true
-
-# volumes:
-#   ecollv3-mongodb:
-#     name: ecollv3-mongodb

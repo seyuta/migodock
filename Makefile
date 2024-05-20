@@ -32,14 +32,22 @@ else
     DOCKER=sudo docker
 endif
 
+start-grafana-prometheus:
+	@echo "starting grafana-prometheus..."
+	@cd grafana-prometheus && $(DOCKER)-compose up -d
+	@$(DOCKER) ps | grep grafana-prometheus
+	@echo "grafana-prometheus started!"
+stop-grafana-prometheus:
+	@cd grafana-prometheus && $(DOCKER)-compose down
+	@echo "grafana-prometheus stopped!"
+
 start-clickhousedb:
 	@echo "starting clickhousedb..."
 	@cd clickhousedb && $(DOCKER)-compose up -d
 	@$(DOCKER) ps | grep clickhousedb-docker
 	@echo "clickhousedb started!"
 stop-clickhousedb:
-	@echo "stopping clickhousedb..."
-	@$(DOCKER) kill clickhousedb-docker && $(DOCKER) container rm clickhousedb-docker
+	@cd clickhousedb && $(DOCKER)-compose down
 	@echo "clickhousedb stopped!"
 
 start-ftp-server:

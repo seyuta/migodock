@@ -2,18 +2,46 @@ version: '3.7'
 services:
   clickhousedb-docker:
     image: clickhouse/clickhouse-server
+    restart: unless-stopped
     container_name: clickhousedb-docker
     hostname: clickhousedb-docker
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "1"
+        max-size: "10m"
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: "2G"
     environment:
       CLICKHOUSE_USER: "mickey"
       CLICKHOUSE_PASSWORD: "mouse"
     volumes:
       - ./data/db/lib/:/var/lib/clickhouse
+      - ./data/db/log/:/var/log/clickhouse-server
+      - .:/etc/clickhouse-server/config.xml
+      # - ./data/test/lib/:/var/lib/clickhouse
+      # - ecollv3-clickhouse:/var/lib/clickhouse
     ports:
       - "8123:8123" # HTTP interface
       - "9010:9000" # Native client interface
     networks:
       - base_net
+  # tabix-docker:
+  #   image: spoonest/clickhouse-tabix-web-client
+  #   restart: unless-stopped
+  #   container_name: "tabix-docker"
+  #   hostname: "tabix-docker"
+  #   ports:
+  #       - "8124:80"
+  #   networks:
+  #       - base_net
 networks:
   base_net:
     external: true
+
+volumes:
+  ecollv3-clickhouse:
+    name: ecollv3-clickhouse
