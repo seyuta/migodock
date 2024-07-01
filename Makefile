@@ -34,25 +34,25 @@ endif
 
 start-grafana-prometheus:
 	@echo "starting grafana-prometheus..."
-	@cd grafana-prometheus && $(DOCKER)-compose up -d
+	@cd grafana-prometheus && $(DOCKER) compose up -d
 	@$(DOCKER) ps | grep grafana-prometheus
 	@echo "grafana-prometheus started!"
 stop-grafana-prometheus:
-	@cd grafana-prometheus && $(DOCKER)-compose down
+	@cd grafana-prometheus && $(DOCKER) compose down
 	@echo "grafana-prometheus stopped!"
 
 start-clickhousedb:
 	@echo "starting clickhousedb..."
-	@cd clickhousedb && $(DOCKER)-compose up -d
+	@cd clickhousedb && $(DOCKER) compose up -d
 	@$(DOCKER) ps | grep clickhousedb-docker
 	@echo "clickhousedb started!"
 stop-clickhousedb:
-	@cd clickhousedb && $(DOCKER)-compose down
+	@cd clickhousedb && $(DOCKER) compose down
 	@echo "clickhousedb stopped!"
 
 start-ftp-server:
 	@echo "starting ftp-server..."
-	@cd ftp-server && $(DOCKER)-compose up -d
+	@cd ftp-server && $(DOCKER) compose up -d
 	@$(DOCKER) ps | grep ftp-server-docker
 	@echo "ftp-server started!"
 stop-ftp-server:
@@ -62,7 +62,7 @@ stop-ftp-server:
 
 start-mongodb:
 	@echo "starting mongodb..."
-	@cd mongodb && $(DOCKER)-compose up -d
+	@cd mongodb && $(DOCKER) compose up -d
 	@$(DOCKER) ps | grep mongodb-docker
 	@echo "mongodb started!"
 stop-mongodb:
@@ -72,7 +72,7 @@ stop-mongodb:
 
 start-mysql:
 	@echo "starting mysql..."
-	@cd mysql && $(DOCKER)-compose up -d
+	@cd mysql && $(DOCKER) compose up -d
 	@$(DOCKER) ps | grep mysql-docker
 	@echo "mysql started!"
 stop-mysql:
@@ -82,7 +82,7 @@ stop-mysql:
 
 start-portainer:
 	@echo "starting portainer..."
-	@cd portainer && $(DOCKER)-compose up -d
+	@cd portainer && $(DOCKER) compose up -d
 	@$(DOCKER) ps | grep portainer-docker
 	@echo "portainer started!"
 stop-portainer:
@@ -92,7 +92,7 @@ stop-portainer:
 
 start-postgres:
 	@echo "starting postgres..."
-	@cd postgres && $(DOCKER)-compose up -d
+	@cd postgres && $(DOCKER) compose up -d
 	@$(DOCKER) ps | grep postgres-docker
 	@echo "postgres started!"
 stop-postgres:
@@ -102,7 +102,7 @@ stop-postgres:
 
 start-pgadmin:
 	@echo "starting pgadmin..."
-	@cd pgadmin && $(DOCKER)-compose up -d
+	@cd pgadmin && $(DOCKER) compose up -d
 	@$(DOCKER) ps | grep pgadmin-docker
 	@echo "pgadmin started!"
 stop-pgadmin:
@@ -112,7 +112,7 @@ stop-pgadmin:
 
 start-rabbitmq:
 	@echo "starting rabbitmq..."
-	@cd rabbitmq && $(DOCKER)-compose up -d
+	@cd rabbitmq && $(DOCKER) compose up -d
 	@$(DOCKER) ps | grep rabbitmq-docker
 	@echo "rabbitmq started!"
 stop-rabbitmq:
@@ -122,7 +122,7 @@ stop-rabbitmq:
 
 start-redis-json:
 	@echo "starting redis-json..."
-	@cd redis-json && $(DOCKER)-compose up -d
+	@cd redis-json && $(DOCKER) compose up -d
 	@$(DOCKER) ps | grep redis-json-docker
 	@echo "redis-json started!"
 stop-redis-json:
@@ -132,7 +132,7 @@ stop-redis-json:
 
 start-nginx:
 	@echo "starting nginx..."
-	@cd nginx && $(DOCKER)-compose up -d
+	@cd nginx && $(DOCKER) compose up -d
 	@$(DOCKER) ps | grep nginx-docker
 	@echo "nginx started!"
 stop-nginx:

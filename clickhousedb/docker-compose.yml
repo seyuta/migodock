@@ -23,7 +23,6 @@ services:
       - ./data/db/log/:/var/log/clickhouse-server
       - .:/etc/clickhouse-server/config.xml
       # - ./data/test/lib/:/var/lib/clickhouse
-      # - ecollv3-clickhouse:/var/lib/clickhouse
     ports:
       - "8123:8123" # HTTP interface
       - "9010:9000" # Native client interface
@@ -41,7 +40,3 @@ services:
 networks:
   base_net:
     external: true
-
-volumes:
-  ecollv3-clickhouse:
-    name: ecollv3-clickhouse
