@@ -27,3 +27,4 @@ redis-json/data*
 nginx/log*
 clickhousedb/data*
 wordpress/data*
+.DS_store

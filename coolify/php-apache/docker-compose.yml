@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  web:
+    image: php:${PHP_VERSION}-apache
+    container_name: php-${PHP_VERSION}-apache
+    volumes:
+      - ./data:/var/www/html
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html
+    command: >
+      bash -c "
+      apt-get update &&
+      apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev libzip-dev libonig-dev libxml2-dev libcurl4-openssl-dev libsqlite3-dev libpq-dev libicu-dev unzip zip git &&
+      docker-php-ext-install -j$(nproc) pdo pdo_mysql mysqli gd mbstring zip curl intl xml opcache bcmath sockets pcntl exif && a2enmod rewrite &&
+      apache2-foreground"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 60s
+      timeout: 10s
+      retries: 5
+    labels:
+      - "coolify.enabled=true"
+      - "traefik.enable=true"
+      # router
+      - "traefik.http.routers.php_web.rule=Host(`${DOMAIN}`) || Host(`www.${DOMAIN}`)"
+      - "traefik.http.routers.php_web.entrypoints=https"
+      - "traefik.http.routers.php_web.tls.certresolver=letsencrypt"
+      # middleware
+      - "traefik.http.routers.php_web.middlewares=wordpress-https-headers"
+      - "traefik.http.middlewares.wordpress-https-headers.headers.customrequestheaders.X-Forwarded-Proto=https"
+      # service
+      - "traefik.http.services.php_web.loadbalancer.server.port=80"
+    networks:
+      - base_net
+networks:
+  base_net:
+    external: true

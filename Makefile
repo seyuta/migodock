@@ -63,11 +63,11 @@ stop-ftp-server:
 start-mongodb:
 	@echo "starting mongodb..."
 	@cd mongodb && $(DOCKER) compose up -d
-	@$(DOCKER) ps | grep mongodb-docker
+	@$(DOCKER) ps | grep mongodb
 	@echo "mongodb started!"
 stop-mongodb:
 	@echo "stopping mongodb..."
-	@$(DOCKER) kill mongodb-docker && $(DOCKER) container rm mongodb-docker
+	@$(DOCKER) kill mongodb && $(DOCKER) container rm mongodb
 	@echo "mongodb stopped!"
 
 start-mysql:
@@ -139,3 +139,13 @@ stop-nginx:
 	@echo "stopping nginx..."
 	@$(DOCKER) kill nginx-docker && $(DOCKER) container rm nginx-docker
 	@echo "nginx stopped!"
+
+start-wordpress:
+	@echo "starting wordpress..."
+	@cd wordpress && $(DOCKER) compose up -d
+	@$(DOCKER) ps | grep wordpress-docker
+	@echo "wordpress started!"
+stop-wordpress:
+	@echo "stopping wordpress..."
+	@$(DOCKER) kill wordpress-docker && $(DOCKER) container rm wordpress-docker
+	@echo "wordpress stopped!"
